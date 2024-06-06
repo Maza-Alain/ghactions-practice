@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - test
+env:
+  NODE_VERSION: 18
 jobs:
   Test:
     runs-on: ubuntu-latest 
@@ -16,7 +18,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
       - name: Verify node instalation
         run: |
           node -v
