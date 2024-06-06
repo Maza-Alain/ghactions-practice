@@ -20,3 +20,17 @@ jobs:
           pip install Flake8
           flake8 .
       
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Bandit
+        working-directory: src
+        run: |
+          pip install bandit
+          bandit -r .
