@@ -15,10 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - name: Verify node instalation
+      # - name: Setup NodeJS
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: ${{ env.NODE_VERSION }}
+      - name: Build nginx
+        working-directory: src
         run: |
-          node -v
+          cp ../scripts/build-image.sh .
+          chmod +x build-image.sh
+          ./build-image.sh
+
