@@ -1,14 +1,14 @@
 ---
-name: Test
+name: Build
 
 on:
   push:
     branches:
-      - test
-env:
-  NODE_VERSION: 18
+      - main
+# env:
+#   NODE_VERSION: 18
 jobs:
-  Test:
+  BuildDockerImage:
     runs-on: ubuntu-latest 
 
     steps:
@@ -19,7 +19,7 @@ jobs:
       #   uses: actions/setup-node@v4
       #   with:
       #     node-version: ${{ env.NODE_VERSION }}
-      - name: Build nginx
+      - name: Build docker image
         working-directory: src
         run: |
           cp ../scripts/build-image.sh .
