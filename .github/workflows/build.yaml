@@ -1,0 +1,28 @@
+---
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+# env:
+#   NODE_VERSION: 18
+jobs:
+  BuildDockerImage:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # - name: Setup NodeJS
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: ${{ env.NODE_VERSION }}
+      - name: Build docker image
+        working-directory: src
+        run: |
+          cp ../scripts/build-image.sh .
+          chmod +x build-image.sh
+          ./build-image.sh
+
