@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - name: Setup nodejs
         uses: actions/setup-node@v4
         with:
@@ -23,6 +26,7 @@ jobs:
 
       - name: Run Semantic Release
         run: npx semantic-release
+
         env:
           GH_TOKEN: ${{ secrets.GHACTIONS_RELEASE }}
 
