@@ -39,7 +39,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
       - name: get latest release
         id: latest_tag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        uses: "WyriHaximus/github-action-get-previous-tag@v1" 
         with:
           fallback: 1.0.0
       - name: Build, tag, and push docker image to Amazon ECR
